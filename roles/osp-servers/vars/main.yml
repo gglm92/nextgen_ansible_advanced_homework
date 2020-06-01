@@ -31,7 +31,7 @@ osp_servers:
     security_group: apps
     meta:
       - { group: apps, deployment_name: QA}
-  db:
+-  db:
     name: db
     cloud: openstack
     state: present
