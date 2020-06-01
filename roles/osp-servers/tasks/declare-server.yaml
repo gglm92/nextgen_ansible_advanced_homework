@@ -1,0 +1,37 @@
+---
+# tasks file for osp.servers
+- name:                 Create server {{ _server.name }}
+  os_server:
+    name:               "{{ _server.name }}"
+    cloud:              "{{ _server.cloud }}"
+    image:              "{{ _server.image }}"
+    key_name:           "{{ _server.key_name }}"
+    flavor:             "{{ _server.flavor | default('m2.small') }}"
+    security_groups:    "{{ _server.security_group | default(_server.group) }}"
+    auto_ip:            false
+    wait:               true
+    nics:
+    - net-name:         "{{ _server.network | default('int_network') }}"
+    meta:
+      group:            "{{ _server.group }}"
+      deployment_name:  "{{ _server.deployment_name }}"
+    userdata: |
+      #!/bin/bash
+      echo "Provisioned on $(date)" >/root/provision.txt
+  register: r_os_server
+
+- name:                 Start server {{ _server.name }}
+  os_server_action:
+    server:             "{{ _server.name }}"
+    cloud:              openstack
+    action:             start
+  when:                 r_os_server.server.vm_state == 'stopped'
+
+- name:                 Add floating IP to {{ _server.name }}
+  os_floating_ip:
+    cloud:              "{{ _server.cloud }}"
+    reuse:              true
+    server:             "{{ _server.name }}"
+    network:            "{{ _server.floating_ip_network | default('ext_network') }}"
+    wait:               true
+    timeout:            200

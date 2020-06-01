@@ -3,6 +3,7 @@
 osp_servers:
   frontend:
     name: frontend
+    cloud: openstack
     state: present
     image: rhel-guest
     key_name: ansible_ssh
@@ -12,6 +13,7 @@ osp_servers:
       - { group: frontends, deployment_name: QA}
   app1:
     name: app1
+    cloud: openstack
     state: present
     image: rhel-guest
     key_name: ansible_ssh
@@ -21,6 +23,7 @@ osp_servers:
       - { group: apps, deployment_name: QA}
   app2:
     name: app2
+    cloud: openstack
     state: present
     image: rhel-guest
     key_name: ansible_ssh
@@ -30,6 +33,7 @@ osp_servers:
       - { group: apps, deployment_name: QA}
   db:
     name: db
+    cloud: openstack
     state: present
     image: rhel-guest
     key_name: ansible_ssh

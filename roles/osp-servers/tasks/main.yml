@@ -1,3 +1,8 @@
 ---
-
 # tasks file for osp.servers
+- name: Declare servers
+  include_tasks: declare-server.yaml
+  loop: "{{ osp_servers }}"
+  loop_control:
+    loop_var: _server
+    label: "{{ _server.name }}"
