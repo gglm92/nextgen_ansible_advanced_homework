@@ -1,7 +1,7 @@
 ---
 # vars file for osp.servers
 osp_servers:
-  frontend:
+-  frontend:
     name: frontend
     cloud: openstack
     state: present
@@ -11,7 +11,7 @@ osp_servers:
     security_group: frontend
     meta:
       - { group: frontends, deployment_name: QA}
-  app1:
+-  app1:
     name: app1
     cloud: openstack
     state: present
@@ -21,7 +21,7 @@ osp_servers:
     security_group: apps
     meta:
       - { group: apps, deployment_name: QA}
-  app2:
+-  app2:
     name: app2
     cloud: openstack
     state: present
