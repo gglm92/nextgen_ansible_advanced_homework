@@ -2,7 +2,8 @@
   gather_facts: true
   roles:
   - name: osp-facts
-    include_role: osp-facts
+    include_role: 
+      name: osp-facts
 # Setup front-end load balancer tier
 
 
