@@ -7,3 +7,21 @@ $ANSIBLE_VAULT;1.1;AES256
 31313765643231633736643837613331303666353830626662643364326630373138343163643233
 33626136616236366630383962393430306633616638333264326438353930646433326431633139
 36306161373463643236
+repos:
+- name: Red Hat Enterprise Linux 7
+  baseurl: http://192.168.0.5/repos/rhel-7-server-rpms
+  enabled: 1
+  gpgcheck: 0
+- baseurl: http://192.168.0.5/repos/rhel-7-server-rh-common-rpms
+  enabled: 1
+  gpgcheck: 0
+
+- name: Red Hat Enterprise Linux 7 Extras
+  baseurl: http://192.168.0.5/repos/rhel-7-server-extras-rpms
+  enabled: 1
+  gpgcheck: 0
+
+- name: Red Hat Enterprise Linux 7 Optional
+  baseurl: http://192.168.0.5/repos/rhel-7-server-optional-rpms
+  enabled: 1
+  gpgcheck: 0
