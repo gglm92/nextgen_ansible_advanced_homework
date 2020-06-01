@@ -32,7 +32,7 @@ osp_servers:
   security_group: apps
   meta:
     group: apps
-   deployment_name: QA
+    deployment_name: QA
 
 - name: db
   cloud: openstack
