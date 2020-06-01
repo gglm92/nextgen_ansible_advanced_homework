@@ -13,8 +13,8 @@
     nics:
     - net-name:         "{{ _server.network | default('int_network') }}"
     meta:
-      group:            "{{ _server.group }}"
-      deployment_name:  "{{ _server.deployment_name }}"
+      group:            "{{ _server.meta.group }}"
+      deployment_name:  "{{ _server.meta.deployment_name }}"
     userdata: |
       #!/bin/bash
       echo "Provisioned on $(date)" >/root/provision.txt
