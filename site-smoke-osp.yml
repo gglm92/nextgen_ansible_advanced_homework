@@ -13,6 +13,8 @@
       _frontend_server_info: "{{ item }}"
     with_items: "{{ r_os_server_info.openstack_servers }}"
     when: "'frontend' in item.name"
+    tags:
+      - osp.smoke
 
   - name: Curl website
     uri:
