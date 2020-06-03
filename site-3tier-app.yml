@@ -7,19 +7,10 @@
 
 - name: setup load-balancer tier
   hosts: frontends
-#  become: yes
-  gather_facts: false
+  become: yes
   roles:
     - {name: base-config, tags: base-config}
     - {name: lb-tier, tags: [lbs, haproxy]}
-  pre_tasks:
-  - name: get the username running the deploy
-    become: false
-    local_action: command {{ item }}
-    register: username_on_the_host
-    with_items: "{{ _commands }}"
-
-  - debug: var=username_on_the_host
 
 # Setup application servers tier
 
