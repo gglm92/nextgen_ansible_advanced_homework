@@ -7,7 +7,9 @@
     register: r_os_server_info
     tags:
       - osp.smoke
+
   - name: Get frontend server info
+    set_fact:
       _frontend_server_info: "{{ item }}"
     with_items: "{{ r_os_server_info.openstack_servers }}"
     when: "'frontend' in item.name"
