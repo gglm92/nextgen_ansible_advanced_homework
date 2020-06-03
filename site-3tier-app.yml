@@ -8,10 +8,11 @@
 - name: setup load-balancer tier
   hosts: frontends
   become: yes
+  gather_facts: false
   roles:
     - {name: base-config, tags: base-config}
     - {name: lb-tier, tags: [lbs, haproxy]}
-  pre-task:
+  pre_task:
   - name: get the username running the deploy
     become: false
     local_action: command whoami
