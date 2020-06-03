@@ -15,7 +15,7 @@
   pre_tasks:
   - name: get the username running the deploy
     become: false
-    local_action: command whoami
+    local_action: command hostname
     register: username_on_the_host
 
   - debug: var=username_on_the_host
