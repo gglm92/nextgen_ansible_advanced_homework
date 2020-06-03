@@ -9,14 +9,7 @@
     backup: yes
 
 - name: enable repos
-  yum_repository: 
-  loop: "{{ repos }}"
-  loop_control: 
-    loop_var: _repo
-    label: "{{ _repo.name }}"
-
-- name: install base tools and packages
-  yum:
-    name: "@base"
-    state: latest
-
+  template:
+    src: internal.repo
+    dest: /etc/yum.repos.d/internal.repo
+    mode: u=rw,g=r,o=r
