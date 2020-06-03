@@ -1,3 +1,8 @@
 ---
-
+- name: Install software with yum
+  yum:
+    name:
+    - haproxy
+    - python2-httpie
+    state: latest
 
