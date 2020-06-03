@@ -17,7 +17,8 @@
       deployment_name:  "{{ _server.meta.deployment_name }}"
     userdata: |
       #!/bin/bash
-      echo "Provisioned on $(date)" >/root/provision.txt
+      curl -o /tmp/openstack.pub http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+      cat /tmp/openstack.pub >> /home/cloud-user/.ssh/authorized_keys
   register: r_os_server
 
 - name:                 Start server {{ _server.name }}
