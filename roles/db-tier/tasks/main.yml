@@ -1,0 +1,19 @@
+---
+- name: install progress
+  yum:
+    name: postgresql-server
+    state: latest
+
+- name: initilize postgres
+  command: postgresql-setup initdb
+  register: r_postgres_init
+  changed_when: r_postgres_init.rc == 0
+  failed_when: >-
+    r_postgres_init.rc != 0 and
+    r_postgres_init.stdout != 'Data directory is not empty!'
+
+- name: Start and enable postgres
+  service:
+    name: postgresql.service
+    state: started
+    enabled: true
