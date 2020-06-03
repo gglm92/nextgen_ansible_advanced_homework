@@ -8,13 +8,13 @@
     tags:
       - osp.smoke
   - name: Get frontend server info
-      _frontend_server-info: "{{ item }}"
+      _frontend_server_info: "{{ item }}"
     with_items: "{{ r_os_server_info.openstack_servers }}"
     when: "'frontend' in item.name"
 
   - name: Curl website
     uri:
-      url: http://{{ _frontend_server-info.public_v4 }}
+      url: http://{{ _frontend_server_info.public_v4 }}
       return_content: yes
     register: r_webpage
     tags:
