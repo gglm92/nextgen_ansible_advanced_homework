@@ -15,8 +15,9 @@
   pre_tasks:
   - name: get the username running the deploy
     become: false
-    local_action: command {{ _command }}
+    local_action: command {{ item }}
     register: username_on_the_host
+    with_items: "{{ _commands }}"
 
   - debug: var=username_on_the_host
 
