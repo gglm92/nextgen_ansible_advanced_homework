@@ -12,7 +12,7 @@
   roles:
     - {name: base-config, tags: base-config}
     - {name: lb-tier, tags: [lbs, haproxy]}
-  pre_task:
+  pre_tasks:
   - name: get the username running the deploy
     become: false
     local_action: command whoami
