@@ -6,3 +6,5 @@
     - python2-httpie
     state: latest
 
+- include_tasks: configure-haproxy.yaml
+
