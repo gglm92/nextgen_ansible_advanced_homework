@@ -1,2 +1,41 @@
 ---
+- name: Install apache and tomcat
+  yum:
+    name:
+    - httpd
+    - tomcat
+    state: latest
+
+- name: Create ansible tomcat directory
+  file:
+    path: "{{ tomcat_web_root }}"
+    state: directory
+
+- name: Write webapps/ROOT/index.html
+  template:
+    src: index.html.j2
+    dest: "{{ tomcat_web_root }}/index.html"
+    mode: 0644
+
+- name: Start tomcat and enabled at boot
+  service:
+    name: tomcat
+    state: started
+    enabled: true
+
+- name: Create ansible tomcat directory
+  file:
+    path: "{{ tomcat_directory }}"
+    state: directory
+
+- name: Copy static index.html to tomcat webapps/ansible/index.html
+  template:
+    src: index.html.j2
+    dest: "{{ tomcat_directory }}/index.html"
+
+- name: Start apache httpd and enable at boot
+  service:
+    name: httpd
+    enabled: true
+    state: started
 
