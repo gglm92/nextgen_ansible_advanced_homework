@@ -8,13 +8,13 @@
 
 - name: Create ansible tomcat directory
   file:
-    path: "{{ tomcat_web_root }}"
+    path: "{{ __tomcat_web_root_directory }}"
     state: directory
 
 - name: Write webapps/ROOT/index.html
   template:
     src: index.html.j2
-    dest: "{{ tomcat_web_root }}/index.html"
+    dest: "{{ __tomcat_web_root_directory }}/index.html"
     mode: 0644
 
 - name: Start tomcat and enabled at boot
@@ -31,7 +31,7 @@
 - name: Copy static index.html to tomcat webapps/ansible/index.html
   template:
     src: index.html.j2
-    dest: "{{ tomcat_directory }}/index.html"
+    dest: "{{ __tomcat_directory }}/index.html"
 
 - name: Start apache httpd and enable at boot
   service:
