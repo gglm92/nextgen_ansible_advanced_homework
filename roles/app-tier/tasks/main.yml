@@ -25,7 +25,7 @@
 
 - name: Create ansible tomcat directory
   file:
-    path: "{{ tomcat_directory }}"
+    path: "{{ __tomcat_directory }}"
     state: directory
 
 - name: Copy static index.html to tomcat webapps/ansible/index.html
