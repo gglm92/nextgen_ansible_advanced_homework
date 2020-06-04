@@ -1,10 +1,10 @@
 ---
-- name: install progress
+- name: Install progress
   yum:
     name: postgresql-server
     state: latest
 
-- name: initilize postgres
+- name: Initilize postgres
   command: postgresql-setup initdb
   register: r_postgres_init
   changed_when: r_postgres_init.rc == 0

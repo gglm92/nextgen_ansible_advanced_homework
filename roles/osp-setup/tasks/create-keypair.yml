@@ -1,3 +1,4 @@
+---
 - name: Generate key files
   user:
     name: "{{ ansible_env.USER }}"

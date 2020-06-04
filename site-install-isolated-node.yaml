@@ -1,3 +1,4 @@
+---
 - hosts: localhost
   vars:
     OSP_GUID: "{{ lookup('env','OSP_GUID') }}"
@@ -5,6 +6,7 @@
     OPENTLC_ID: "{{ lookup('env','OPENTLC_ID') }}"
   gather_facts: false
   tasks:
+
   - name: Append inventory file
     blockinfile:
       path: /root/ansible-tower-setup-latest/inventory
@@ -14,6 +16,7 @@
         [isolated_group_osp:vars]
         controller=tower
       state: present
+
   - name: Run Ansible Tower setup
     shell: /root/ansible-tower-setup-latest/setup.sh
     async: 3600

@@ -1,6 +1,8 @@
+---
 - hosts: workstation
   gather_facts: false
   tasks:
+
   - name: OpenStack servers
     os_server_info:
       cloud: openstack
@@ -23,8 +25,6 @@
     register: r_webpage
     tags:
       - osp.smoke
-
-  - debug: var=r_webpage
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:

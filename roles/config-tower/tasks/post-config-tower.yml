@@ -1,3 +1,4 @@
+---
 - name: Create Homework Assignment project
   tower_project:
     name: "{{ proj_name }}"
