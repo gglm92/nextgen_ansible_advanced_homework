@@ -1,18 +1,19 @@
-#osp-facts
+#lb-tier
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-osp-facts is an ansible role used to get information of instances from Openstack and add it to inventory.
+lb-tier is an ansible role used to install and configure haproxy.
 
 Requirements
 ------------
-It's required a connection to openstack.
+It's required a repository enabled on the hosts to install haproxy.
 
 Example Playbook
 ----------------
     - hosts: servers
 	  become: yes
+	  gather_facts: false
       roles:
-        - osp-facts
+        - lb-tier
 
 License
 -------

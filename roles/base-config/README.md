@@ -1,18 +1,15 @@
-#osp-facts
+#base-config
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-osp-facts is an ansible role used to get information of instances from Openstack and add it to inventory.
-
-Requirements
-------------
-It's required a connection to openstack.
+base-config is an ansible role used to enable repositories.
 
 Example Playbook
 ----------------
     - hosts: servers
 	  become: yes
+	  gather_facts: false
       roles:
-        - osp-facts
+        - base-config
 
 License
 -------
