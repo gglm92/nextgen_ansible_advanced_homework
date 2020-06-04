@@ -1,6 +1,6 @@
 galaxy_info:
     author: Gary López
-    description: Role to install and configure haproxy for App Tier application
+    description: Role to install postgresql for App Tier application
 
     license: GPLv3
 
@@ -12,7 +12,7 @@ galaxy_info:
       - 7
 
     galaxy_tags:
-      - haproxy
+      - postgresql
 
 dependencies:
     - basic-config
