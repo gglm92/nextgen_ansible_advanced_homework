@@ -1,6 +1,7 @@
 #osp-facts
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+
 osp-facts is an ansible role used to get information of instances from Openstack and add it to inventory.
 
 Requirements

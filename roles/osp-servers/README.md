@@ -1,38 +1,74 @@
-Role Name
-=========
+#osp-servers
 
-A brief description of the role goes here.
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+
+osp-servers is an ansible role used to create Openstack instances to deploy Tier App.
 
 Requirements
 ------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+It's required a connection to openstack.
 
 Role Variables
 --------------
+```sh
+__osp_servers:
+- name: frontend
+  cloud: openstack
+  state: present
+  image: rhel-guest
+  key_name: ansible_ssh
+  flavor: m1.medium
+  security_group: frontend
+  meta:
+    group: frontends
+    deployment_name: QA
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- name: app1
+  cloud: openstack
+  state: present
+  image: rhel-guest
+  key_name: ansible_ssh
+  flavor: m1.medium
+  security_group: apps
+  meta:
+    group: apps
+    deployment_name: QA
 
-Dependencies
-------------
+- name: app2
+  cloud: openstack
+  state: present
+  image: rhel-guest
+  key_name: ansible_ssh
+  flavor: m1.medium
+  security_group: apps
+  meta:
+    group: apps
+    deployment_name: QA
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+- name: db
+  cloud: openstack
+  state: present
+  image: rhel-guest
+  key_name: ansible_ssh
+  flavor: m1.medium
+  security_group: db
+  meta:
+    group: appdbs
+    deployment_name: QA
+
+```
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
     - hosts: servers
+	  become: yes
       roles:
-         - { role: username.rolename, x: 42 }
+        - osp-instance-delete
 
 License
 -------
-
-BSD
+GPLv3
 
 Author Information
 ------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This role was created in 2020 by [Gary López](https://github.com/gglm92 "Gary López").

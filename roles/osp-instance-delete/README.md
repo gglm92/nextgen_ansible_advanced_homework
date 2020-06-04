@@ -1,6 +1,7 @@
 #osp-instance-delete
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+
 osp-instance-delete is an ansible role used to delete Openstack instances.
 
 Requirements
